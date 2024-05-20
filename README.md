@@ -15,14 +15,24 @@ This project is used for learning for Advanced Web Programming Course focused fo
 
 ```bash
 project
-│   .env
-│   composer.json   
-└───resources
-    └───js
-    |   │   app.js
-    |   │   bootstrap.js
-    |   └───Layouts
-    |       │   app.vue
-    └───views
-        |   welcome.blade.php
+├── app/
+│   └── Http/
+│       └── Controllers/
+│           ├── DashboardControllers.php
+│           └── UserControllers.php
+├── config/
+│   └── app.php
+├── resources/
+│   ├── js/
+│   │   ├── Pages/
+│   │   │   ├── Dashboard/
+│   │   │   │   └── Index.vue
+│   │   │   └── User/
+│   │   │       └── Index.vue
+│   │   └── Shared/
+│   │       └── Layout.vue
+│   └── views/
+│       └── app.blade.php
+└── routes/
+    └── web.php
 ```
