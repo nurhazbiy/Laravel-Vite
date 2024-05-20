@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::controller(UserController::class)->group(function () {
+    Route::get('/user/{name}', 'index');
+    Route::get('/user', function() {
+        $name = $_GET['name'] ?? 'Default';
+        $userC = new UserController;
+        $userC->index($name);
+    });
+    Route::delete('/user/{name}', 'delete');
 });
+
+
+Route::get('/', [DashboardController::class, 'index'])
+    ->name('dashboard');

@@ -21,7 +21,7 @@ project
     └───js
     |   │   app.js
     |   │   bootstrap.js
-    |   └───layouts
+    |   └───Layouts
     |       │   app.vue
     └───views
         |   welcome.blade.php

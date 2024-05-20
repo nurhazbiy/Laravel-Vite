@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/devcontainers/php:1-8.2-bookworm
 
 # Install MariaDB client
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get install -y mariadb-client \ 
+    && apt-get install -y mariadb-client \
     && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 # Install php-mysql driver
@@ -17,7 +17,7 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql
 
 # Additional
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &&\
-RUN sudo apt-get install -y nodejs
+ sudo apt-get install -y nodejs
 
 COPY php/php.ini /usr/local/etc/php/php.ini
 COPY php/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
