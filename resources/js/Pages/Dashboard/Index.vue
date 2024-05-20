@@ -10,7 +10,6 @@ const newTodo = ref('')
 // give each todo a unique id
 let id = 0
 const hideCompleted = ref(false)
-const errorMessage = ref('')
 const todos = ref([
     {id: id++, text: 'Learn HTML', done: false},
     {id: id++, text: 'Learn JavaScript', done: true},
@@ -24,13 +23,8 @@ const filteredTodos = computed(() => {
 })
 
 function addTodo() {
-    errorMessage.value = ""
-    if (newTodo.value !== '') {
-        todos.value.push({id: id++, text: newTodo.value, done: false})
-        newTodo.value = ''
-    } else {
-        errorMessage.value = "Inserting empty ToDo is not allowed!"
-    }
+    todos.value.push({id: id++, text: newTodo.value, done: false})
+    newTodo.value = ''
 }
 
 function removeTodo(todo) {
@@ -85,16 +79,14 @@ onMounted(() => {
                             <button
                                 :class="{'bg-red-500' : hideCompleted, }"
                                 class="flex-shrink-0  hover:bg-red-700 border-red-500 hover:border-red-700 text-sm border-2 text-white py-2 px-3 rounded"
-                                @click="hideCompleted = !hideCompleted">
+                                @click="hideCompleted = !hideCompleted" type="button">
                                 {{ hideCompleted ? 'Show all' : 'Hide completed' }}
                             </button>
                             <button
                                 class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-2 text-white py-2 px-3 rounded ml-2"
-                                type="button"
-                                @click="addTodo"> Add
+                                type="submit"> Add
                             </button>
                         </form>
-                        <span id="addToDoHelp" class="text-s text-red-500">{{ errorMessage }}</span>
                     </div>
                     <ul>
                         <li v-for="todo in filteredTodos" :key="todo.id">
