@@ -46,6 +46,6 @@ services:
     #            PMA_PASSWORD: 'p]74SR]P6T'  PMA_USER: 'risearrow_wp'
     #            PMA_PASSWORD: 'p]74SR]P6T'
     ports:
-      - '8001:80'
+      - '9001:80'
 volumes:
   mariadb-data:

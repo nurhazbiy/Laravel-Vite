@@ -1,11 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
     mode: 'jit',
-    purge: [
-        "./resources/**/*.blade.php",
-        "./resources/**/*.js",
-        "./resources/**/*.vue",
-    ],
     content: [
         "./resources/**/*.blade.php",
         "./resources/**/*.js",

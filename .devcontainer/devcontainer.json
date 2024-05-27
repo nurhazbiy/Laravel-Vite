@@ -10,10 +10,12 @@
 	// "features": {},
 
 	// For use with PHP or Apache (e.g.php -S localhost:8080 or apache2ctl start)
-	"forwardPorts": [8080, 8001, 3306, 9000, 9003]
+	"forwardPorts": [9001, 9000],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "sudo chmod a+x \"$(pwd)\" && sudo rm -rf /var/www/html && sudo ln -s \"$(pwd)\" /var/www/html"
+//    "postStartCommand": "nohup bash -c 'php artisan serve --port 9000 &' & nohup bash -c 'npm run dev &' & ",
+    "postStartCommand": "nohup bash -c 'npm run dev &' & "
 
 	// Configure tool-specific properties.
 	// "customizations": {},
