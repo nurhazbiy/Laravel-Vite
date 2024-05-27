@@ -1,5 +1,5 @@
 <script setup>
-import {ref, onMounted, computed} from "vue"
+import {ref, onMounted, watch} from "vue"
 import Layout from '@/Shared/Layout.vue'
 import axios from "axios"
 import {Link} from "@inertiajs/vue3";
@@ -41,7 +41,7 @@ async function toggleHide(index) {
     if (pokes.value[index].hide) {
         if (!pokes.value[index].loaded) {
             pokes.value[index].loading = true
-            pokes.value[index].details = await fetchPokeDetails(pokes.value[index].url)
+            pokes.value[index].details = await fetchPokeDetails(pokes.value[index].url) // There are multiple ways to save data like these, but this is the simplest yet messy way :p
             console.log(pokes.value[index].details)
             pokes.value[index].loading = false
             pokes.value[index].loaded = true
@@ -60,6 +60,12 @@ function hideAll() {
 
 onMounted(async () => {
     await fetchInitialPoke()
+})
+
+watch(pokes, () => {
+// yes, console.log() is a side effect
+    const str = JSON.stringify(pokes.value)
+    console.log(`new poke list is: ${str}`)
 })
 
 </script>
