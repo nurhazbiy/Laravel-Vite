@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PokeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -26,6 +27,13 @@ Route::controller(UserController::class)->group(function () {
     Route::delete('/user/{name}', 'delete');
 });
 
+Route::controller(PokeController::class)->prefix('/poke')->group(function () {
+    Route::get('/}', 'index');
+    Route::get('/formatted', 'formatted');
+});
+
+Route::get('/poke', [PokeController::class, 'index'])
+    ->name('poke.index');
 
 Route::get('/', [DashboardController::class, 'index'])
-    ->name('dashboard');
+    ->name('dashboard.index');
